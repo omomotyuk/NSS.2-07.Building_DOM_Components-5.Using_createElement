@@ -10,7 +10,7 @@ Using createElement(), you're going to create a simple list of chat messages tha
 4. Using appendChild(), attach each message as a child to the messages element.
 */
 
-const articleElement  = document.querySelector( '#messages' );
+//const articleElement  = document.querySelector( '#messages' );
 
 //
 let sectionContent = [ 
@@ -22,9 +22,15 @@ let sectionContent = [
 ];
 
 //
+const fragment = document.createDocumentFragment()
+
+//
 sectionContent.forEach( message => {
     const messageElement = document.createElement( 'section' );
     messageElement.className = "message";
-    messageElement.innerHTML = message;
-    articleElement.appendChild( messageElement );
+    messageElement.textContent = message;
+    fragment.appendChild(messageElement);
 })
+
+//
+document.querySelector("#messages").appendChild(fragment);
